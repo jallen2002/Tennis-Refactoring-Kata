@@ -23,8 +23,7 @@ namespace Tennis
 
         public string GetScore()
         {
-            string score = "";
-            var tempScore = 0;
+
 
             if (player2CurrentScore == player1CurrentScore)
             {
@@ -36,29 +35,10 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    if (i == 1) tempScore = player1CurrentScore;
-                    else { score += "-"; tempScore = player2CurrentScore; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
-                }
+                return getDefaultScore(player1CurrentScore, player2CurrentScore);
             }
-            return score;
         }
+
 
         private string getAdvatageOrWin(int player1CurrentScore, int player2CurrentScore)
         {
@@ -69,6 +49,33 @@ namespace Tennis
             else if (minusResult == -1) score = "Advantage player2";
             else if (minusResult >= 2) score = "Win for player1";
             else score = "Win for player2";
+            return score;
+        }
+
+        private string getDefaultScore(int player1CurrentScore, int player2CurrentScore)
+        {
+            var tempScore = 0;
+            var score = "";
+            for (var i = 1; i < 3; i++)
+            {
+                if (i == 1) tempScore = player1CurrentScore;
+                else { score += "-"; tempScore = player2CurrentScore; }
+                switch (tempScore)
+                {
+                    case 0:
+                        score += "Love";
+                        break;
+                    case 1:
+                        score += "Fifteen";
+                        break;
+                    case 2:
+                        score += "Thirty";
+                        break;
+                    case 3:
+                        score += "Forty";
+                        break;
+                }
+            }
             return score;
         }
 
