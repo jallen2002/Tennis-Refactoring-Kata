@@ -25,8 +25,12 @@ namespace Tennis
         {
             string score = "";
             var tempScore = 0;
+
             if (player2CurrentScore == player1CurrentScore)
             {
+                score = returnTieScore(player2CurrentScore);
+
+
                 switch (player2CurrentScore)
                 {
                     case 0:
@@ -77,6 +81,22 @@ namespace Tennis
             }
             return score;
         }
+
+        private string returnTieScore(int player2CurrentScore)
+        {
+            switch (player2CurrentScore)
+            {
+                case 0:
+                    return "Love-All";
+                case 1:
+                    return "Fifteen-All";
+                case 2:
+                    return "Thirty-All";
+                default:
+                    return "Deuce";
+            }
+        }
+
     }
 }
 
