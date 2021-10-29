@@ -23,8 +23,6 @@ namespace Tennis
 
         public string GetScore()
         {
-
-
             if (player2CurrentScore == player1CurrentScore)
             {
                return getTieScore(player2CurrentScore);
@@ -54,29 +52,22 @@ namespace Tennis
 
         private string getDefaultScore(int player1CurrentScore, int player2CurrentScore)
         {
-            var tempScore = 0;
-            var score = "";
-            for (var i = 1; i < 3; i++)
+            return $"{getScoreName(player1CurrentScore)}-{getScoreName(player2CurrentScore)}";
+        }
+
+        private object getScoreName(int currentScore)
+        {
+            switch (currentScore)
             {
-                if (i == 1) tempScore = player1CurrentScore;
-                else { score += "-"; tempScore = player2CurrentScore; }
-                switch (tempScore)
-                {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
-                }
+                case 0:
+                   return "Love";
+                case 1:
+                   return "Fifteen";
+                case 2:
+                   return "Thirty";
+                default:
+                   return "Forty";
             }
-            return score;
         }
 
         private string getTieScore(int tiedScore)
