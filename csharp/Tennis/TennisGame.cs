@@ -32,11 +32,7 @@ namespace Tennis
             }
             else if (player1CurrentScore >= 4 || player2CurrentScore >= 4)
             {
-                var minusResult = player1CurrentScore - player2CurrentScore;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
+                return getAdvatageOrWin(player1CurrentScore, player2CurrentScore);
             }
             else
             {
@@ -64,9 +60,21 @@ namespace Tennis
             return score;
         }
 
-        private string getTieScore(int player2CurrentScore)
+        private string getAdvatageOrWin(int player1CurrentScore, int player2CurrentScore)
         {
-            switch (player2CurrentScore)
+            //refactor this later with ${} for player 1/2
+            var score = "";
+            var minusResult = player1CurrentScore - player2CurrentScore;
+            if (minusResult == 1) score = "Advantage player1";
+            else if (minusResult == -1) score = "Advantage player2";
+            else if (minusResult >= 2) score = "Win for player1";
+            else score = "Win for player2";
+            return score;
+        }
+
+        private string getTieScore(int tiedScore)
+        {
+            switch (tiedScore)
             {
                 case 0:
                     return "Love-All";
