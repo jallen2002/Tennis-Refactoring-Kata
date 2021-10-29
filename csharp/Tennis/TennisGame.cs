@@ -28,25 +28,7 @@ namespace Tennis
 
             if (player2CurrentScore == player1CurrentScore)
             {
-                score = returnTieScore(player2CurrentScore);
-
-
-                switch (player2CurrentScore)
-                {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-
-                }
+               return getTieScore(player2CurrentScore);
             }
             else if (player1CurrentScore >= 4 || player2CurrentScore >= 4)
             {
@@ -82,7 +64,7 @@ namespace Tennis
             return score;
         }
 
-        private string returnTieScore(int player2CurrentScore)
+        private string getTieScore(int player2CurrentScore)
         {
             switch (player2CurrentScore)
             {
